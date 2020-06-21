@@ -12,6 +12,9 @@ const forecast = require('./utils/forecast')
  //console.log(path.join(__dirname, '../public'))
  
  const app = express();
+ //heroku pulls the port # from env variable PORT
+ const port = process.env.PORT || 3000;
+
  //define paths for express config
  const publicDir = path.join(__dirname, '../public');
 //if views dir has to be customised, new dir has to be explicitly provided to express
@@ -107,6 +110,6 @@ app.get('/*', (req, res) => {
     })
 })
 
- app.listen(3000, () => {
-     console.log('Listening on port 3000')
+ app.listen(port, () => {
+     console.log(`Listening on port ${port}`)
  })
